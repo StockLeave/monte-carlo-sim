@@ -62,7 +62,7 @@ loss_probability = np.sum(np.array(final_balances) < initial_balance) / num_runs
 st.markdown("---")
 st.markdown(f"**Average Final Balance:** ${avg_balance:,.2f}")
 st.markdown(f"**Median Final Balance:** ${median_balance:,.2f}")
+st.markdown(f"**Standard Deviation:** ${std_dev:,.2f}")
 st.markdown(f"**Best Case (Maximum Run):** ${max_balance:,.2f}")
 st.markdown(f"**Worst Case (Minimum Run):** ${min_balance:,.2f}")
-st.markdown(f"**Standard Deviation:** ${std_dev:,.2f}")
 st.markdown(f"**% of Runs Below Initial Balance:** {loss_probability:.1f}%")
