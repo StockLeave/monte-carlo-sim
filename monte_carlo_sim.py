@@ -2,8 +2,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ---- App Title ----
-st.title("Monte Carlo Simulation")
+# ---- Centered Subheader ----
+st.markdown("<h3 style='text-align: center;'>Monte Carlo Simulation</h3>", unsafe_allow_html=True)
 
 # ---- Inputs in Sidebar ----
 st.sidebar.header("Simulation Settings")
@@ -24,8 +24,7 @@ num_runs = st.sidebar.slider("Number of Simulated Runs", 1, 50, 20)
 
 # ---- Simulation ----
 
-# Define grayscale tones
-greys = [str(shade / 20) for shade in range(2, 10)]  # Values from 0.1 to 0.45 (darker tones)
+greys = [str(shade / 20) for shade in range(2, 10)]  # grayscale
 np.random.seed(42)
 
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -46,4 +45,7 @@ ax.set_xlabel("Trade Number")
 ax.set_ylabel("Account Balance")
 ax.grid(True)
 
+# ---- Center the plot ----
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 st.pyplot(fig)
+st.markdown("</div>", unsafe_allow_html=True)
