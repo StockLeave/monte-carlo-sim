@@ -63,7 +63,7 @@ ax.grid(True)
 
 st.pyplot(fig)
 
-# Calculate stats
+# Stats
 avg_balance = np.mean(final_balances)
 median_balance = np.median(final_balances)
 max_balance = np.max(final_balances)
@@ -75,20 +75,24 @@ avg_drawdown = np.mean(drawdowns) * 100
 max_drawdown = np.max(drawdowns) * 100
 min_drawdown = np.min(drawdowns) * 100
 
-# Display stats in two columns
+# Centered two-column layout
 st.markdown("---")
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("### Final Balance Stats")
-    st.markdown(f"**Average:** ${avg_balance:,.2f}")
-    st.markdown(f"**Median:** ${median_balance:,.2f}")
-    st.markdown(f"**Best Case:** ${max_balance:,.2f}")
-    st.markdown(f"**Worst Case:** ${min_balance:,.2f}")
+    st.markdown("**Final Balance**")
+    st.markdown(f"Average: ${avg_balance:,.2f}")
+    st.markdown(f"Median: ${median_balance:,.2f}")
+    st.markdown(f"Best Case: ${max_balance:,.2f}")
+    st.markdown(f"Worst Case: ${min_balance:,.2f}")
 
 with col2:
-    st.markdown("### Drawdown & Risk")
-    st.markdown(f"**Avg Max Drawdown:** {avg_drawdown:.2f}%")
-    st.markdown(f"**Worst Drawdown:** {max_drawdown:.2f}%")
-    st.markdown(f"**Best Drawdown:** {min_drawdown:.2f}%")
-    st.markdown(f"**% Below Initial Balance:** {loss_probability:.1f}%")
+    st.markdown("**Risk Values**")
+    st.markdown(f"Avg Max Drawdown: {avg_drawdown:.2f}%")
+    st.markdown(f"Worst Drawdown: {max_drawdown:.2f}%")
+    st.markdown(f"Best Drawdown: {min_drawdown:.2f}%")
+    st.markdown(f"% Below Initial Balance: {loss_probability:.1f}%")
+
+st.markdown("</div>", unsafe_allow_html=True)
