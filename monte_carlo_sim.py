@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
 
-st.markdown("<h2 style='text-align: center;'>Monte Carlo Simulation</h2>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; font-size: 16px;'>Visualize potential outcomes over time based on a probabilistic trading model.</p>", unsafe_allow_html=True)
 
 st.sidebar.header("Simulation Settings")
 
