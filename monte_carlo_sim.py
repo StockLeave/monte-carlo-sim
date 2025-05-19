@@ -2,10 +2,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ---- Centered Subheader ----
+st.title("Monte Carlo Simulation")
 
-
-# ---- Inputs in Sidebar ----
 st.sidebar.header("Simulation Settings")
 
 initial_balance = st.sidebar.number_input("Initial Account Balance ($)", value=50000)
@@ -22,9 +20,7 @@ rr_ratio = st.sidebar.number_input("Risk-to-Reward Ratio", value=1.1)
 num_trades = st.sidebar.slider("Number of Trades", 50, 1000, 500)
 num_runs = st.sidebar.slider("Number of Simulated Runs", 1, 50, 20)
 
-# ---- Simulation ----
-
-greys = [str(shade / 20) for shade in range(2, 10)]  # grayscale
+greys = [str(shade / 20) for shade in range(2, 10)]
 np.random.seed(42)
 
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -45,7 +41,4 @@ ax.set_xlabel("Trade Number")
 ax.set_ylabel("Account Balance")
 ax.grid(True)
 
-# ---- Center the plot ----
-st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 st.pyplot(fig)
-st.markdown("</div>", unsafe_allow_html=True)
