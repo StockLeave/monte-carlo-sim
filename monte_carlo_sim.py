@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 # Optional: You can remove this line or set to centered explicitly
 st.set_page_config(layout="centered")
 
+st.subheader("Monte Carlo Trading Simulation")
+
 # ---- Inputs in Sidebar ----
 st.sidebar.header("Simulation Settings")
 
