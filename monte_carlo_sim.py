@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout="centered")
 
 st.title("Monte Carlo Simulation")
-st.markdown("<h3 style='text-align: center;'>Monte Carlo Trading Simulation</h3>", unsafe_allow_html=True)
 
 st.sidebar.header("Simulation Settings")
 
