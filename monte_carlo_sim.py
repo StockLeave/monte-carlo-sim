@@ -2,7 +2,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-st.set_page_config(layout="wide")  # Make layout full width
+# (Remove wide layout for default content width)
+# st.set_page_config(layout="wide")
 
 st.sidebar.header("Simulation Settings")
 
@@ -23,7 +24,8 @@ num_runs = st.sidebar.slider("Number of Simulated Runs", 1, 50, 20)
 greys = [str(shade / 20) for shade in range(2, 10)]
 np.random.seed(42)
 
-fig, ax = plt.subplots(figsize=(12, 6))
+# 👇 Slightly bigger than default, but not huge
+fig, ax = plt.subplots(figsize=(10, 5))
 for run in range(num_runs):
     balance = initial_balance
     history = [balance]
@@ -41,7 +43,7 @@ ax.set_xlabel("Trade Number")
 ax.set_ylabel("Account Balance")
 ax.grid(True)
 
-# ✅ Center and display the larger plot
+# ✅ Center the plot only (without wide layout)
 st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 st.pyplot(fig)
 st.markdown("</div>", unsafe_allow_html=True)
