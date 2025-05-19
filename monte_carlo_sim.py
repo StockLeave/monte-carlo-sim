@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
 
-st.markdown("<h3 style='text-align: center;'>Monte Carlo Simulation</h3>", unsafe_allow_html=True)
+st.title("Monte Carlo Simulation")
+st.markdown("<h3 style='text-align: center;'>Monte Carlo Trading Simulation</h3>", unsafe_allow_html=True)
 
 st.sidebar.header("Simulation Settings")
 
@@ -22,11 +23,10 @@ rr_ratio = st.sidebar.number_input("Risk-to-Reward Ratio", value=1.1)
 num_trades = st.sidebar.slider("Number of Trades", 50, 1000, 500)
 num_runs = st.sidebar.slider("Number of Simulated Runs", 1, 50, 20)
 
-# ---- Simulation ----
-
 greys = [str(shade / 20) for shade in range(2, 10)]
 np.random.seed(42)
 
+fig, ax = plt.subplots(figsize=(10, 5))
 for run in range(num_runs):
     balance = initial_balance
     history = [balance]
