@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ---- App Title ----
-st.title("Trading System Monte Carlo Simulation")
+st.title("Monte Carlo Simulation")
 
 # ---- Inputs in Sidebar ----
 st.sidebar.header("Simulation Settings")
@@ -23,9 +23,8 @@ num_trades = st.sidebar.slider("Number of Trades", 50, 1000, 500)
 num_runs = st.sidebar.slider("Number of Simulated Runs", 1, 50, 20)
 
 # ---- Simulation ----
-st.subheader("Simulation Result")
 
-# Define grayscale and colored lines
+# Define grayscale tones
 greys = [str(shade / 20) for shade in range(2, 10)]  # Values from 0.1 to 0.45 (darker tones)
 np.random.seed(42)
 
@@ -42,7 +41,7 @@ for run in range(num_runs):
     ax.plot(history, color=color, linewidth=1)
 
 ax.axhline(initial_balance, color='black', linestyle='--', label='Initial Balance')
-ax.set_title("Trading System Simulation")
+ax.set_title("Account Balance Over Time", fontsize=14)
 ax.set_xlabel("Trade Number")
 ax.set_ylabel("Account Balance")
 ax.grid(True)
