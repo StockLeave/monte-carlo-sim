@@ -2,12 +2,10 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Optional: You can remove this line or set to centered explicitly
 st.set_page_config(layout="centered")
 
-st.markdown("<h3 style='text-align: center;'>Monte Carlo Trading Simulation</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Monte Carlo Simulation</h3>", unsafe_allow_html=True)
 
-# ---- Inputs in Sidebar ----
 st.sidebar.header("Simulation Settings")
 
 initial_balance = st.sidebar.number_input("Initial Account Balance ($)", value=50000)
@@ -29,7 +27,6 @@ num_runs = st.sidebar.slider("Number of Simulated Runs", 1, 50, 20)
 greys = [str(shade / 20) for shade in range(2, 10)]
 np.random.seed(42)
 
-fig, ax = plt.subplots(figsize=(10, 5))  # default size, mobile-friendly
 for run in range(num_runs):
     balance = initial_balance
     history = [balance]
