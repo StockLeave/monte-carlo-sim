@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # Optional: You can remove this line or set to centered explicitly
 st.set_page_config(layout="centered")
 
-st.markdown("<h3 style='text-align: center;'>Trading Simulation</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Monte Carlo Trading Simulation</h3>", unsafe_allow_html=True)
 
 # ---- Inputs in Sidebar ----
 st.sidebar.header("Simulation Settings")
