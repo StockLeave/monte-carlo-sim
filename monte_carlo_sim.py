@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
 
-st.subheader("Monte Carlo Simulation")
+st.markdown("<h2 style='text-align: center;'>Monte Carlo Simulation</h2>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 16px;'>Visualize expected value over time based on a probabilistic trading model.</p>", unsafe_allow_html=True)
 
 st.sidebar.header("Simulation Settings")
 
@@ -15,7 +16,6 @@ if risk_type == "Dollar Amount":
     risk_per_trade = st.sidebar.number_input("Risk Per Trade ($)", value=1000)
 else:
     risk_pct = st.sidebar.number_input("Risk Per Trade (% of account)", value=2.0)
-    risk_per_trade = initial_balance * (risk_pct / 100)
 
 win_rate = st.sidebar.slider("Win Rate (%)", min_value=0.0, max_value=100.0, value=50.0) / 100
 rr_ratio = st.sidebar.number_input("Risk-to-Reward Ratio", value=1.1)
@@ -31,7 +31,11 @@ for run in range(num_runs):
     history = [balance]
     for _ in range(num_trades):
         win = np.random.rand() < win_rate
-        pnl = rr_ratio * risk_per_trade if win else -risk_per_trade
+        if risk_type == "Dollar Amount":
+            trade_risk = risk_per_trade
+        else:
+            trade_risk = balance * (risk_pct / 100)
+        pnl = rr_ratio * trade_risk if win else -trade_risk
         balance += pnl
         history.append(balance)
     color = greys[run % len(greys)]
@@ -44,4 +48,3 @@ ax.set_ylabel("Account Balance")
 ax.grid(True)
 
 st.pyplot(fig)
-
