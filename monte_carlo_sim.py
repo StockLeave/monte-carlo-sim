@@ -4,9 +4,7 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
 
-st.markdown("<p style='text-align: center; font-size: 16px;'>Visualize potential outcomes over time based on a probabilistic trading model.</p>", unsafe_allow_html=True)
-
-st.sidebar.header("Trading Model Settings")
+st.sidebar.header("Simulation Settings")
 
 initial_balance = st.sidebar.number_input("Initial Account Balance ($)", value=50000)
 
@@ -84,7 +82,7 @@ with col1:
     st.markdown(f"Worst Case: ${min_balance:,.2f}")
 
 with col2:
-    st.markdown("**Risk Values**")
+    st.markdown("**Risk Exposure**")
     st.markdown(f"Avg Max Drawdown: {avg_drawdown:.2f}%")
     st.markdown(f"Worst Drawdown: {max_drawdown:.2f}%")
     st.markdown(f"Best Drawdown: {min_drawdown:.2f}%")
