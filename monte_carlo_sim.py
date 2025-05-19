@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
 
-st.title("Monte Carlo Simulation")
+st.subtitle("Monte Carlo Simulation")
 
 st.sidebar.header("Simulation Settings")
 
