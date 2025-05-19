@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ---- Centered Subheader ----
-st.markdown("<h3 style='text-align: center;'>Monte Carlo Simulation</h3>", unsafe_allow_html=True)
+
 
 # ---- Inputs in Sidebar ----
 st.sidebar.header("Simulation Settings")
