@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout="centered")
 
 st.markdown("<h2 style='text-align: center;'>Monte Carlo Simulation</h2>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; font-size: 16px;'>Visualize expected value over time based on a probabilistic trading model.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 16px;'>Visualize potential outcomes over time based on a probabilistic trading model.</p>", unsafe_allow_html=True)
 
 st.sidebar.header("Simulation Settings")
 
@@ -25,7 +25,10 @@ num_runs = st.sidebar.slider("Number of Simulated Runs", 1, 50, 20)
 greys = [str(shade / 20) for shade in range(2, 10)]
 np.random.seed(42)
 
+# Plot simulation
 fig, ax = plt.subplots(figsize=(10, 5))
+final_balances = []
+
 for run in range(num_runs):
     balance = initial_balance
     history = [balance]
@@ -40,6 +43,7 @@ for run in range(num_runs):
         history.append(balance)
     color = greys[run % len(greys)]
     ax.plot(history, color=color, linewidth=1)
+    final_balances.append(balance)
 
 ax.axhline(initial_balance, color='black', linestyle='--', label='Initial Balance')
 ax.set_title("Account Balance Over Time", fontsize=14)
@@ -48,3 +52,20 @@ ax.set_ylabel("Account Balance")
 ax.grid(True)
 
 st.pyplot(fig)
+
+# Calculate and display summary stats
+avg_balance = np.mean(final_balances)
+median_balance = np.median(final_balances)
+max_balance = np.max(final_balances)
+min_balance = np.min(final_balances)
+std_dev = np.std(final_balances)
+loss_probability = np.sum(np.array(final_balances) < initial_balance) / num_runs * 100
+
+st.markdown("---")
+st.markdown("### Outcome Summary")
+st.markdown(f"**Average Final Balance:** ${avg_balance:,.2f}")
+st.markdown(f"**Median Final Balance:** ${median_balance:,.2f}")
+st.markdown(f"**Best Case (Maximum Run):** ${max_balance:,.2f}")
+st.markdown(f"**Worst Case (Minimum Run):** ${min_balance:,.2f}")
+st.markdown(f"**Standard Deviation:** ${std_dev:,.2f}")
+st.markdown(f"**% of Runs Below Starting Balance:** {loss_probability:.1f}%")
