@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
+st.set_page_config(layout="wide")  # Make layout full width
+
 st.sidebar.header("Simulation Settings")
 
 initial_balance = st.sidebar.number_input("Initial Account Balance ($)", value=50000)
@@ -39,4 +41,7 @@ ax.set_xlabel("Trade Number")
 ax.set_ylabel("Account Balance")
 ax.grid(True)
 
+# ✅ Center and display the larger plot
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 st.pyplot(fig)
+st.markdown("</div>", unsafe_allow_html=True)
