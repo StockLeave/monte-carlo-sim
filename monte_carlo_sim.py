@@ -4,9 +4,11 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="centered")
 
-st.markdown("<h2 style='text-align: center;'>Monte Carlo Simulation</h2>", unsafe_allow_html=True)
+# Title & subtitle
+st.markdown("<h3 style='text-align: center;'>Monte Carlo Simulation</h3>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 16px;'>Visualize potential outcomes over time based on a probabilistic trading model.</p>", unsafe_allow_html=True)
 
+# Sidebar inputs
 st.sidebar.header("Trading Model Settings")
 
 initial_balance = st.sidebar.number_input("Initial Account Balance ($)", value=50000)
@@ -22,6 +24,7 @@ rr_ratio = st.sidebar.number_input("Risk-to-Reward Ratio", value=1.1)
 num_trades = st.sidebar.slider("Number of Trades", 50, 1000, 500)
 num_runs = st.sidebar.slider("Number of Simulated Runs", 1, 50, 20)
 
+# Monte Carlo simulation
 greys = [str(shade / 20) for shade in range(2, 10)]
 np.random.seed(42)
 
@@ -63,7 +66,7 @@ ax.grid(True)
 
 st.pyplot(fig)
 
-# Stats
+# Summary statistics
 avg_balance = np.mean(final_balances)
 median_balance = np.median(final_balances)
 max_balance = np.max(final_balances)
@@ -75,10 +78,8 @@ avg_drawdown = np.mean(drawdowns) * 100
 max_drawdown = np.max(drawdowns) * 100
 min_drawdown = np.min(drawdowns) * 100
 
-# Centered two-column layout
+# Layout stats side-by-side
 st.markdown("---")
-st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-
 col1, col2 = st.columns(2)
 
 with col1:
@@ -94,5 +95,3 @@ with col2:
     st.markdown(f"Worst Drawdown: {max_drawdown:.2f}%")
     st.markdown(f"Best Drawdown: {min_drawdown:.2f}%")
     st.markdown(f"% Below Initial Balance: {loss_probability:.1f}%")
-
-st.markdown("</div>", unsafe_allow_html=True)
