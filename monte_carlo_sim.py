@@ -77,6 +77,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("**Final Balance**")
     st.markdown(f"Average: ${avg_balance:,.2f}")
+    st.markdown(f"Standard Deviation: ${std_dev:,.2f}")
     st.markdown(f"Median: ${median_balance:,.2f}")
     st.markdown(f"Best Case: ${max_balance:,.2f}")
     st.markdown(f"Worst Case: ${min_balance:,.2f}")
