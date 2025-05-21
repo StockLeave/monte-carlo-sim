@@ -6,13 +6,13 @@ st.set_page_config(layout="centered")
 
 st.sidebar.header("Simulation Settings")
 
-initial_balance = st.sidebar.number_input("Initial Account Balance ($)", value=50000)
+initial_balance = st.sidebar.number_input("Initial Account Balance ($)", value=100000)
 
 risk_type = st.sidebar.radio("Risk Type", ["Dollar Amount", "Percent of Account"])
 if risk_type == "Dollar Amount":
     risk_per_trade = st.sidebar.number_input("Risk Per Trade ($)", value=1000)
 else:
-    risk_pct = st.sidebar.number_input("Risk Per Trade (% of account)", value=2.0)
+    risk_pct = st.sidebar.number_input("Risk Per Trade (% of account)", value=1.0)
 
 win_rate = st.sidebar.slider("Win Rate (%)", min_value=0.0, max_value=100.0, value=50.0) / 100
 rr_ratio = st.sidebar.number_input("Risk-to-Reward Ratio", value=1.1)
